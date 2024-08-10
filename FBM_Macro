@@ -1,0 +1,395 @@
+Sub fbm_test()
+
+Dim ws As Worksheet
+
+Dim i As Integer           
+Dim j As Integer
+Dim k As Integer
+Dim count As Integer
+
+Dim lastrow As Integer
+
+Set ws = ThisWorkbook.Sheets("Sheet1")
+
+'Start From Row 2 
+'X: B, Y: C, BLK: D, WL: E, BL: F
+'Wrong Type: H
+'Test: P
+
+lastrow = ws.Range("a" & ws.Rows.count).End(xlUp).Row
+
+ws.Range("p1") = "Last Row:" & lastrow
+
+For i = 2 To lastrow
+    
+    'BL 
+    If ws.Range("h" & i) = 1 Then
+        count = 0
+        For j = 0 To 19
+            If ws.Range("h" & i + j + 1) = 1 Then
+                If ws.Range("a" & i + j) = ws.Range("a" & i + j + 1) And _
+                   ws.Range("b" & i + j) = ws.Range("b" & i + j + 1) And _
+                   ws.Range("c" & i + j) = ws.Range("c" & i + j + 1) And _
+                   ws.Range("d" & i + j) = ws.Range("d" & i + j + 1) And _
+                   ws.Range("f" & i + j) = ws.Range("f" & i + j + 1) Then
+                        count = count + 1
+                Else
+                        count = 0
+                End If
+            End If
+            
+            If count = 19 Then
+                For k = 0 To 19
+                    ws.Range("o" & i + k) = 1
+                Next k
+            End If
+                
+        Next j
+        
+    End If
+    
+    
+    'WL 
+    If ws.Range("h" & i) = 1 Then
+        count = 0
+        For j = 0 To 9
+            If ws.Range("h" & i + j + 1) = 1 Then
+                If ws.Range("a" & i + j) = ws.Range("a" & i + j + 1) And _
+                   ws.Range("b" & i + j) = ws.Range("b" & i + j + 1) And _
+                   ws.Range("c" & i + j) = ws.Range("c" & i + j + 1) And _
+                   ws.Range("d" & i + j) = ws.Range("d" & i + j + 1) And _
+                   ws.Range("e" & i + j) = ws.Range("e" & i + j + 1) Then
+                        count = count + 1
+                Else
+                        count = 0
+                End If
+            End If
+            
+            If count = 9 Then
+                For k = 0 To 9
+                    ws.Range("n" & i + k) = 1
+                Next k
+            End If
+                
+        Next j
+        
+    End If
+       
+       
+    '4bit
+    If ws.Range("h" & i) = 1 Then
+        count = 0
+        For j = 0 To 1
+            If ws.Range("h" & i + j + 1) = 1 Then
+                If ws.Range("a" & i + j) = ws.Range("a" & i + j + 1) And _
+                   ws.Range("a" & i + j) = ws.Range("a" & i + j + 2) And _
+                   ws.Range("a" & i + j) = ws.Range("a" & i + j + 3) And _
+                   ws.Range("b" & i + j) = ws.Range("b" & i + j + 1) And _
+                   ws.Range("b" & i + j) = ws.Range("b" & i + j + 2) And _
+                   ws.Range("b" & i + j) = ws.Range("b" & i + j + 3) And _
+                   ws.Range("c" & i + j) = ws.Range("c" & i + j + 1) And _
+                   ws.Range("c" & i + j) = ws.Range("c" & i + j + 2) And _
+                   ws.Range("c" & i + j) = ws.Range("c" & i + j + 3) And _
+                   ws.Range("d" & i + j) = ws.Range("d" & i + j + 1) And _
+                   ws.Range("d" & i + j) = ws.Range("d" & i + j + 2) And _
+                   ws.Range("d" & i + j) = ws.Range("d" & i + j + 3) And _
+                   ws.Range("f" & i + j) = ws.Range("f" & i + j + 2) And _
+                   ws.Range("e" & i + j) = ws.Range("e" & i + j + 1) Then
+                        count = count + 1
+                Else
+                        count = 0
+                End If
+            End If
+            
+            If count = 1 Then
+                ws.Range("m" & i) = 1
+                ws.Range("m" & i + 1) = 1
+                ws.Range("m" & i + 2) = 1
+                ws.Range("m" & i + 3) = 1
+            End If
+                
+        Next j
+        
+    End If
+    
+    
+    '2bit V 
+     If ws.Range("h" & i) = 1 Then
+        count = 0
+        For j = 0 To 1
+            If ws.Range("h" & i + j + 1) = 1 Then
+                If ws.Range("a" & i + j) = ws.Range("a" & i + j + 1) And _
+                   ws.Range("b" & i + j) = ws.Range("b" & i + j + 1) And _
+                   ws.Range("c" & i + j) = ws.Range("c" & i + j + 1) And _
+                   ws.Range("d" & i + j) = ws.Range("d" & i + j + 1) And _
+                   ws.Range("f" & i + j) = ws.Range("f" & i + j + 1) Then
+                        count = count + 1
+                Else
+                        count = 0
+                End If
+            End If
+            
+            If count = 1 Then
+                ws.Range("k" & i) = 1
+                ws.Range("k" & i + 1) = 1
+            End If
+                
+        Next j
+        
+    End If
+    
+ 
+    '2bit H 
+      If ws.Range("h" & i) = 1 Then
+        count = 0
+        For j = 0 To 1
+            If ws.Range("h" & i + j + 1) = 1 Then
+                If ws.Range("a" & i + j) = ws.Range("a" & i + j + 1) And _
+                   ws.Range("b" & i + j) = ws.Range("b" & i + j + 1) And _
+                   ws.Range("c" & i + j) = ws.Range("c" & i + j + 1) And _
+                   ws.Range("d" & i + j) = ws.Range("d" & i + j + 1) And _
+                   ws.Range("e" & i + j) = ws.Range("e" & i + j + 1) Then
+                        count = count + 1
+                Else
+                        count = 0
+                End If
+            End If
+            
+            If count = 1 Then
+                ws.Range("l" & i) = 1
+                ws.Range("l" & i + 1) = 1
+            End If
+                
+        Next j
+        
+    End If
+    
+    '1bit
+      If ws.Range("h" & i) = 1 Then
+        count = 0
+        For j = 0 To 1
+            If ws.Range("a" & i + j) = ws.Range("a" & i + j + 1) Then
+                    count = count + 1
+            Else
+                    count = 0
+            End If
+
+            
+            If count = 1 Then
+                ws.Range("j" & i) = 1
+            End If
+                
+        Next j
+        
+    End If
+    
+                    
+Next i
+
+Call table
+
+
+End Sub
+
+
+
+' Table Function 
+
+Sub table()
+Dim ws As Worksheet
+Dim ps As Worksheet
+Dim i As Integer
+Dim lastrow As Integer
+Dim count As Integer
+
+'Use for Dict to count the fail Die
+Dim xycheck As Object
+Dim key As String
+
+Set xycheck = CreateObject("scripting.dictionary")
+
+
+'Create Table and set worksheet
+Set ps = ThisWorkbook.Sheets("Sheet1")
+Set ws = ThisWorkbook.Sheets.Add(after:=ThisWorkbook.Sheets("Sheet1"))
+ws.Name = "Result Table"
+MsgBox "Result Table have been created"
+
+'Program Start
+
+lastrow = ps.Range("a" & ps.Rows.count).End(xlUp).Row
+
+'Initialize
+ws.Range("a" & 1) = "TNO"
+ws.Range("a" & 2) = "TNO 483"
+ws.Range("a" & 3) = "Ratio"
+ws.Range("b" & 1) = "1-Bit"
+ws.Range("c" & 1) = "2-Bits(V)"
+ws.Range("d" & 1) = "2-Bits(H)"
+ws.Range("e" & 1) = "4-Bits"
+ws.Range("f" & 1) = "WL"
+ws.Range("g" & 1) = "BL"
+ws.Range("h" & 1) = "Total Die: 64"
+
+'1Bit
+count = 0
+
+For i = 2 To lastrow
+        If ps.Range("j" & i) = 1 And _
+           ps.Range("k" & i) = 0 And _
+           ps.Range("l" & i) = 0 And _
+           ps.Range("m" & i) = 0 And _
+           ps.Range("n" & i) = 0 And _
+           ps.Range("o" & i) = 0 Then
+            key = ps.Cells(i, "b") & "_ " & ps.Cells(i, "c")
+            
+            If Not xycheck.exists(key) Then
+                count = count + 1
+                xycheck.Add key, True
+            End If
+        End If
+    
+Next i
+
+ws.Range("b" & 2) = count
+
+'Calaulte Ratio
+ws.Range("b" & 3) = count / 64 * 100 & "%"
+xycheck.RemoveAll
+
+
+
+
+'2Bit(V)
+count = 0
+
+For i = 2 To lastrow
+
+    If ps.Range("k" & i) = 1 And _
+       ps.Range("l" & i) = 0 And _
+       ps.Range("m" & i) = 0 And _
+       ps.Range("n" & i) = 0 And _
+       ps.Range("o" & i) = 0 Then
+            key = ps.Cells(i, "b") & "_ " & ps.Cells(i, "c")
+            
+            If Not xycheck.exists(key) Then
+                count = count + 1
+                xycheck.Add key, True
+            End If
+            
+    End If
+Next i
+
+ws.Range("C" & 2) = count
+
+'Calaulte Ratio
+ws.Range("C" & 3) = count / 64 * 100 & "%"
+xycheck.RemoveAll
+
+
+
+'2Bit(H)
+count = 0
+
+For i = 2 To lastrow
+
+    If ps.Range("l" & i) = 1 And _
+       ps.Range("m" & i) = 0 And _
+       ps.Range("n" & i) = 0 And _
+       ps.Range("o" & i) = 0 Then
+            key = ps.Cells(i, "b") & "_ " & ps.Cells(i, "c")
+            
+            If Not xycheck.exists(key) Then
+                count = count + 1
+                xycheck.Add key, True
+            End If
+            
+    End If
+Next i
+
+ws.Range("d" & 2) = count
+
+'Calaulte Ratio
+ws.Range("d" & 3) = count / 64 * 100 & "%"
+
+xycheck.RemoveAll
+
+
+
+'4bit
+count = 0
+
+For i = 2 To lastrow
+
+    If ps.Range("m" & i) = 1 And _
+       ps.Range("n" & i) = 0 And _
+       ps.Range("o" & i) = 0 Then
+            key = ps.Cells(i, "b") & "_ " & ps.Cells(i, "c")
+            
+            If Not xycheck.exists(key) Then
+                count = count + 1
+                xycheck.Add key, True
+            End If
+       
+       
+    End If
+Next i
+
+ws.Range("e" & 2) = count
+
+'Calaulte Ratio
+ws.Range("e" & 3) = count / 64 * 100 & "%"
+
+xycheck.RemoveAll
+
+
+
+
+
+'WL 
+count = 0
+
+For i = 2 To lastrow
+
+    If ps.Range("n" & i) = 1 And _
+       ps.Range("o" & i) = 0 Then
+            key = ps.Cells(i, "b") & "_ " & ps.Cells(i, "c")
+            
+            If Not xycheck.exists(key) Then
+                count = count + 1
+                xycheck.Add key, True
+            End If
+      
+    End If
+Next i
+
+ws.Range("f" & 2) = count
+
+'Calaulte Ratio
+ws.Range("f" & 3) = count / 64 * 100 & "%"
+xycheck.RemoveAll
+
+
+
+'BL 
+count = 0
+
+For i = 2 To lastrow
+        If ps.Range("o" & i) = 1 Then
+                key = ps.Cells(i, "b").Value & "_" & ps.Cells(i, "c").Value
+        
+                If Not xycheck.exists(key) Then
+                    count = count + 1
+                    xycheck.Add key, True
+                End If
+        End If
+    
+Next i
+
+ws.Range("g" & 2) = count
+
+'Calaulte Ratio
+ws.Range("g" & 3) = count / 64 * 100 & "%"
+
+
+End Sub
